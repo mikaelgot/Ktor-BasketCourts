@@ -8,12 +8,16 @@ import io.ktor.server.http.content.*
 
 fun Application.configureRouting() {
     routing {
+        uploadFile()
+        getAllBasketCourts()
         randomBasketCourt1()
         get("/") {
             call.respondText("Hello Basket fans!")
         }
-        static("/static"){
-            resources("static")
-        }
+        //Path for static content
+        //static was deprecated, this is the new way
+        //remote path = the relative path in URL (in browser, etc.)
+        //basePackage = the actual directory in the package
+        staticResources("/basketcourts", "basketCourtImages")
     }
 }

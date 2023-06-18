@@ -12,5 +12,5 @@ data class BasketCourt(
     val isClosedCourt: Boolean = false,
     val terrain: String = "Asphalt",
     val isPaid: Boolean = false,
-    val imageUrl: String,
+    val imageUrl: String = "",
 )
