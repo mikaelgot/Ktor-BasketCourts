@@ -3,6 +3,8 @@ package com.klintsoft.routes
 import com.google.gson.Gson
 import com.google.gson.JsonDeserializer
 import com.klintsoft.data.model.BasketCourt
+import com.klintsoft.functions.readCourts
+import com.klintsoft.functions.saveCourts
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.server.application.*
@@ -43,7 +45,8 @@ fun Route.getAllBasketCourts() {
     get("/allbasketcourts"){
         call.respond(
             HttpStatusCode.OK,
-            basketCourts //This is going to be the server reply, automatically parsed to a JSON string
+            readCourts()
+            //basketCourts //This is going to be the server reply, automatically parsed to a JSON string
         )
     }
 }
@@ -160,8 +163,8 @@ fun Route.uploadCourtWithImage() {
                     imageId = nextId
                     val newCourt = receivedCourt.copy(id = nextId, imageUrl = "$BASE_URL/basketcourts/$imageId.jpg")
                     basketCourts.add(newCourt)
-
                 }
+                saveCourts(basketCourts)
 
                 if (courtImagePart != null) { //If image is not replaced this is null and the image stays the same
                     val file = File("build/resources/main/basketCourtImages/${imageId.toString()}.jpg")

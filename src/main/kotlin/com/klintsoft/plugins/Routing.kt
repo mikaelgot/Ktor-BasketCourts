@@ -22,5 +22,6 @@ fun Application.configureRouting() {
         //remote path = the relative path in URL (in browser, etc.)
         //basePackage = the actual directory in the package
         staticResources("/basketcourts", "basketCourtImages")
+        staticResources("/basketcourtdata", "basketCourtData")
     }
 }
