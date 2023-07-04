@@ -9,10 +9,11 @@ import io.ktor.server.http.content.*
 fun Application.configureRouting() {
     routing {
         uploadImage()
-        uploadFile()
+        uploadCourtWithImage()
+        specificFile()
         uploadNewCourt()
         getAllBasketCourts()
-        randomBasketCourt1()
+        //randomBasketCourt1()
         get("/") {
             call.respondText("Hello Basket fans!")
         }
